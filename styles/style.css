@@ -670,4 +670,55 @@ header h1 {
         margin: 0 auto;
         border-radius: 10px;
     }
+
+}
+/* Instrucciones para móviles */
+.mobile-instruction {
+    display: none;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    border-left: 5px solid #ffeb3b;
+}
+
+.instruction-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.mobile-instruction p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Mostrar solo en móviles */
+@media (max-width: 768px) {
+    .mobile-instruction {
+        display: block;
+    }
+}
+
+/* Efecto adicional para inputs en móvil */
+@media (max-width: 768px) {
+    .percentage-input {
+        background: #fff !important;
+        border: 2px solid #667eea !important;
+        font-weight: bold;
+    }
+    
+    .slider-track {
+        background: #e9ecef !important;
+        height: 10px !important;
+    }
+    
+    .slider-fill {
+        background: linear-gradient(90deg, #667eea, #764ba2) !important;
+        height: 10px !important;
+    }
 }
