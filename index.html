@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronóstico Elecciones Chile</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Pronóstico Elecciones Chile</h1>
+        </header>
+
+        <div class="participant-info">
+            <input type="text" id="participantName" placeholder="nombre o apodo" class="name-input">
+        </div>
+
+        <div class="candidates-container" id="candidatesContainer">
+            <!-- Los candidatos se generarán dinámicamente -->  
+        </div>
+        
+        <div class="summary">
+            <div class="total-percentage">
+                Total: <span id="totalPercentage">0%</span>
+            </div>
+            <div class="validation-message" id="validationMessage"></div>
+        </div>
+
+        <div class="actions">
+            <button id="submitBtn" class="btn-primary">Guardar Pronóstico</button>
+            <button id="resultsBtn" class="btn-secondary">Ver Resultados</button>
+        </div>
+
+        <!-- Modal para resultados -->
+        <div id="resultsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Resultados de los Pronósticos</h2>
+                <div id="resultsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

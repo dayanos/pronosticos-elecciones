@@ -1,0 +1,673 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --text-dark: #333;
+    --text-light: #666;
+    --bg-light: #f8f9fa;
+    --border-color: #dee2e6;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    min-height: 100vh;
+    padding: 15px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    padding: 25px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 0 10px;
+}
+
+header h1 {
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+}
+
+/* Participant Info */
+.participant-info {
+    margin-bottom: 20px;
+}
+
+.name-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Candidate Items - Responsive */
+.candidate-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 12px;
+    margin-bottom: 12px;
+    background: var(--bg-light);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+    gap: 15px;
+}
+
+.candidate-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.photo-container {
+    width: clamp(40px, 10vw, 50px);
+    height: clamp(40px, 10vw, 50px);
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.candidate-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.candidate-name {
+    flex: 1;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    color: var(--text-dark);
+    min-width: 0;
+    word-break: break-word;
+}
+
+/* Slider Styles */
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(100%, 320px);
+    min-height: 50px;
+}
+
+.slider-wrapper {
+    position: relative;
+    flex: 1;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+}
+
+.percentage-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 3;
+    cursor: pointer;
+    touch-action: pan-y;
+}
+
+.slider-track {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.slider-fill {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.1s ease;
+    z-index: 2;
+}
+
+/* Input manual para porcentaje */
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: min(100px, 25vw);
+    min-width: 70px;
+}
+
+.percentage-input {
+    width: 100%;
+    padding: 10px 24px 10px 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: clamp(0.85rem, 3vw, 0.95rem);
+    font-weight: 600;
+    text-align: center;
+    color: var(--primary-color);
+    background: white;
+    font-family: 'Courier New', monospace;
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.percentage-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.percentage-input::-webkit-outer-spin-button,
+.percentage-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.percent-symbol {
+    position: absolute;
+    right: 10px;
+    color: #6c757d;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    pointer-events: none;
+}
+
+/* Summary Section */
+.summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+    padding: 18px 15px;
+    background: #e9ecef;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.total-percentage {
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    font-weight: bold;
+}
+
+#totalPercentage.valid {
+    color: var(--success-color);
+}
+
+#totalPercentage.invalid {
+    color: var(--danger-color);
+}
+
+.validation-message {
+    color: var(--danger-color);
+    font-weight: 500;
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    text-align: right;
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Actions Buttons */
+.actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: clamp(12px, 3vw, 15px) clamp(25px, 5vw, 35px);
+    border: none;
+    border-radius: 10px;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    min-width: 140px;
+    flex: 1;
+    max-width: 200px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #5a6fd8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+/* Modal Styles - Responsive */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 30px);
+    border-radius: 15px;
+    width: min(95%, 600px);
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: clamp(24px, 6vw, 32px);
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--text-dark);
+}
+
+/* Result Items */
+.result-item.fondo-par {
+    background: linear-gradient(135deg, #f8f9ff, #ffffff);
+    border-radius: 12px;
+    padding: clamp(15px, 3vw, 20px);
+    margin-bottom: clamp(15px, 3vw, 20px);
+    border: 2px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.result-item.fondo-impar {
+    background: linear-gradient(135deg, #f0f2f5, #ffffff);
+    border-radius: 12px;
+    padding: clamp(15px, 3vw, 20px);
+    margin-bottom: clamp(15px, 3vw, 20px);
+    border: 2px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: clamp(15px, 3vw, 20px);
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e9ecef;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.participant-name {
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    font-weight: 800;
+    color: #2c3e50;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.vote-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.vote-date {
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    background: rgba(102, 126, 234, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    text-align: center;
+}
+
+/* Número de fondo grande para los 2 primeros */
+.background-rank {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(60px, 15vw, 100px);
+    font-weight: 900;
+    color: rgba(255, 193, 7, 0.25);
+    z-index: 0;
+    pointer-events: none;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Cajas de ganadores */
+.candidate-result.segunda-vuelta {
+    position: relative;
+    background: linear-gradient(135deg, #fff9e6, #ffffff);
+    border-left: 5px solid var(--warning-color);
+    box-shadow: 0 3px 10px rgba(255, 193, 7, 0.15);
+    padding: clamp(12px, 2.5vw, 16px);
+    margin-bottom: 10px;
+    border: 1px solid var(--warning-color);
+    overflow: hidden;
+    min-height: clamp(70px, 15vw, 85px);
+}
+
+.candidate-result.segunda-vuelta .candidate-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    gap: 12px;
+}
+
+/* Foto para primeros 2 candidatos */
+.candidate-result.segunda-vuelta .photo-container {
+    width: clamp(45px, 12vw, 55px);
+    height: clamp(45px, 12vw, 55px);
+    border-radius: 50%;
+    border: 3px solid var(--warning-color);
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 3px 6px rgba(255, 193, 7, 0.2);
+}
+
+.candidate-result.segunda-vuelta .candidate-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Info para primeros 2 candidatos */
+.candidate-result.segunda-vuelta .candidate-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.candidate-result.segunda-vuelta .candidate-name {
+    font-weight: 700;
+    color: #000;
+    font-size: clamp(0.95rem, 3vw, 1.15rem);
+    margin-right: 10px;
+    word-break: break-word;
+}
+
+.candidate-result.segunda-vuelta .candidate-percentage {
+    background: linear-gradient(135deg, var(--warning-color), #ffb300);
+    color: #000;
+    padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2.5vw, 16px);
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    min-width: min(80px, 20vw);
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(255, 179, 0, 0.2);
+    flex-shrink: 0;
+}
+
+/* Candidatos 3-8 compactos */
+.candidate-result.candidato-compacto {
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    border-left: 3px solid #ced4da;
+    transition: all 0.2s ease;
+    min-height: auto !important;
+    height: auto !important;
+}
+
+.candidate-result.candidato-compacto:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(3px);
+}
+
+.compact-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: nowrap !important;
+}
+
+.compact-rank {
+    font-weight: 600;
+    color: #6c757d;
+    font-size: 0.85rem;
+    min-width: 25px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.compact-name {
+    flex: 1;
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+    margin: 0 10px;
+    word-break: break-word;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.compact-percentage {
+    font-weight: 600;
+    color: #495057;
+    background: #e9ecef;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    min-width: 45px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Badge segunda vuelta */
+.segunda-vuelta-badge {
+    background: linear-gradient(135deg, #ffeb3b, #ffc107);
+    color: #000;
+    padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px);
+    border-radius: 15px;
+    font-size: clamp(0.65rem, 2vw, 0.75rem);
+    font-weight: 700;
+    margin-left: 10px;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(255, 179, 0, 0.3);
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+/* Loading y mensajes de error */
+.loading-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.error-message {
+    text-align: center;
+    padding: 20px;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    color: #721c24;
+    margin: 20px 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+    
+    .candidate-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .photo-container {
+        align-self: center;
+        margin-right: 0;
+    }
+    
+    .slider-container {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .slider-wrapper {
+        width: 100%;
+    }
+    
+    .input-container {
+        width: 120px;
+        align-self: center;
+    }
+    
+    .summary {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .validation-message {
+        text-align: center;
+        min-width: auto;
+    }
+    
+    .actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        max-width: 250px;
+        width: 100%;
+    }
+    
+    .result-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .vote-info {
+        align-items: center;
+    }
+    
+    .candidate-result.segunda-vuelta .candidate-content {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .segunda-vuelta-badge {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px 12px;
+        border-radius: 10px;
+    }
+    
+    .candidate-item {
+        padding: 12px 10px;
+        gap: 12px;
+    }
+    
+    .input-container {
+        width: 100px;
+    }
+    
+    .modal-content {
+        padding: 20px 15px;
+        width: 100%;
+        max-height: 90vh;
+        top: 0;
+        transform: none;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+}
