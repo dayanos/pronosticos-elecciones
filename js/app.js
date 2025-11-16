@@ -187,7 +187,7 @@ async function guardarPronostico() {
         const recordData = {
             "fields": {
                 "Nombre": nombre,
-                "Fecha": new Date().toISOString(),
+                "Fecha": new Date().toLocaleString('es-CL'),
                 "Candidatos": JSON.stringify(candidatosData)
             }
         };
