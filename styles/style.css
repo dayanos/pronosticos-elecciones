@@ -33,35 +33,21 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* HEADER COMPLETAMENTE CENTRADO */
+/* HEADER COMPLETAMENTE CENTRADO - MODIFICADO */
 .header-container {
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header-content {
     display: inline-flex;
     align-items: center;
     gap: 20px;
-    margin-bottom: 10px;
-}
-
-.title-image {
-    width: 140px; /* Imagen más grande */
-    height: auto;
-    border-radius: 0;
-    object-fit: contain;
-    border: none;
-    box-shadow: none;
-}
-
-.main-title {
-    color: var(--text-dark);
-    margin: 0;
-    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Título MUY grande */
-    font-weight: 800;
-    line-height: 1.1;
-    text-align: left;
+    /* margin-bottom: 10px; */ /* ELIMINAR ESTA LÍNEA */
+    margin-bottom: 5px; /* REDUCIR EL ESPACIO */
 }
 
 .subtitle {
@@ -71,8 +57,13 @@ body {
     font-weight: 600;
     text-align: center;
     font-style: italic;
+    /* NUEVAS PROPIEDADES PARA CENTRAR RESPECTO AL TÍTULO */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    left: 0; /* Ajustar este valor si necesitas compensar */
 }
-
 /* Texto de instrucción discreto */
 .instruction-text {
     text-align: center;
@@ -756,3 +747,4 @@ body {
         border-radius: 10px;
     }
 }
+
