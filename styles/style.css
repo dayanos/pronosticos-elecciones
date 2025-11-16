@@ -33,31 +33,32 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* Header con imagen */
+/* Header con imagen - CENTRADO */
 .header-with-image {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .title-image {
-    width: 120px; /* Más grande */
-    height: auto; /* Mantener proporción */
-    border-radius: 0; /* Sin bordes redondeados */
-    object-fit: contain; /* Mostrar imagen completa */
-    border: none; /* Sin borde */
-    box-shadow: none; /* Sin sombra */
+    width: 120px;
+    height: auto;
+    border-radius: 0;
+    object-fit: contain;
+    border: none;
+    box-shadow: none;
 }
 
 .header-with-image h1 {
     color: var(--text-dark);
-    margin-bottom: 0;
-    font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2.1rem); /* TÍTULO MÁS GRANDE */
     font-weight: 700;
-    line-height: 1.2;
-    flex: 1;
+    line-height: 1.3;
+    text-align: center;
 }
 
 /* Texto de instrucción discreto */
@@ -617,12 +618,12 @@ body {
     }
     
     .title-image {
-        width: 100px; /* Un poco más pequeña en móvil */
+        width: 100px;
         height: auto;
     }
     
     .header-with-image h1 {
-        font-size: clamp(1.1rem, 4vw, 1.5rem);
+        font-size: clamp(1.3rem, 4vw, 1.7rem);
     }
     
     .candidate-item {
@@ -731,7 +732,7 @@ body {
     }
     
     .title-image {
-        width: 80px; /* Aún más pequeña en móviles muy pequeños */
+        width: 80px;
     }
     
     .modal-content {
