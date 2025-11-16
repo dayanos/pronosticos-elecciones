@@ -183,14 +183,16 @@ async function guardarPronostico() {
             });
         });
         
-        // Preparar datos para Airtable
+        // Preparar datos para Airtable - FORMATO CORREGIDO
         const recordData = {
             "fields": {
                 "Nombre": nombre,
-                "Fecha": new Date().toLocaleString('es-CL'),
+                "Fecha": new Date().toISOString().split('T')[0], // Solo la fecha, no la hora
                 "Candidatos": JSON.stringify(candidatosData)
             }
         };
+        
+        console.log('Enviando a Airtable:', recordData);
         
         const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_CONFIG.BASE_ID}/${encodeURIComponent(AIRTABLE_CONFIG.TABLE_NAME)}`;
         
