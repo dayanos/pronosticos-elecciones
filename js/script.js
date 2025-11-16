@@ -37,7 +37,7 @@ const candidatos = [
 // ✅ CONFIGURACIÓN AIRTABLE CORREGIDA
 const AIRTABLE_CONFIG = {
     BASE_ID: 'appsQFN6YZHx5OAxH',  // ← SIN la I final
-    API_KEY: 'TU_TOKEN_AQUI',      // ← REEMPLAZA con tu token real
+    API_KEY: 'patfW1kdjbenRsNH1',      // ← REEMPLAZA con tu token real
     TABLE_NAME: 'Table 1'          // ← EN INGLÉS
 };
 
