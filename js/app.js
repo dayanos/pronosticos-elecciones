@@ -183,15 +183,14 @@ async function guardarPronostico() {
             });
         });
         
-        // Preparar datos para Airtable - FORMATO CORREGIDO
-        const recordData = {
-            "fields": {
-                "Nombre": nombre,
-                "Fecha": new Date().toISOString().split('T')[0], // Solo la fecha, no la hora
-                "Candidatos": JSON.stringify(candidatosData)
-            }
-        };
-        
+// Preparar datos para Airtable - FECHA COMPLETA CON HORA
+const recordData = {
+    "fields": {
+        "Nombre": nombre,
+        "Fecha": new Date().toISOString(), // ← GUARDAR FECHA Y HORA COMPLETA
+        "Candidatos": JSON.stringify(candidatosData)
+    }
+};
         console.log('Enviando a Airtable:', recordData);
         
         const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_CONFIG.BASE_ID}/${encodeURIComponent(AIRTABLE_CONFIG.TABLE_NAME)}`;
