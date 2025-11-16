@@ -293,16 +293,18 @@ async function cargarResultadosAirtable() {
     }
 }
 
+// ✅ FUNCIÓN CORREGIDA: FORMATEAR FECHA
 function formatFecha(fechaISO) {
     try {
         const fecha = new Date(fechaISO);
-        return fecha.toLocaleDateString('es-CL', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+        // Formato chileno: DD-MM-AAAA, HH:MM
+        const dia = fecha.getDate().toString().padStart(2, '0');
+        const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+        const año = fecha.getFullYear();
+        const horas = fecha.getHours().toString().padStart(2, '0');
+        const minutos = fecha.getMinutes().toString().padStart(2, '0');
+        
+        return `${dia}-${mes}-${año}, ${horas}:${minutos}`;
     } catch (e) {
         return 'Fecha no disponible';
     }
