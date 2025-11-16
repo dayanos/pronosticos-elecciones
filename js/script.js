@@ -38,7 +38,7 @@ const candidatos = [
 const AIRTABLE_CONFIG = {
     BASE_ID: 'appsQFN6YZHx5OAxHI', // Reemplaza con tu Base ID
     API_KEY: 'patfW1kdjbenRsNH1.0f41e6c98e0609e6b877762c64dffbcc43ddbb4e2188f6891c80004ef3fcbcf3', // Reemplaza con tu API Key
-    TABLE_NAME: 'Tabla 1' // Normalmente es "Tabla 1" por defecto
+    TABLE_NAME: 'Table 1' // Normalmente es "Tabla 1" por defecto
 };
 
 // URLs de Airtable
@@ -399,4 +399,5 @@ window.addEventListener('click', function(event) {
     if (event.target === modal) {
         cerrarModal();
     }
+
 });
