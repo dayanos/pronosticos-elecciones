@@ -389,3 +389,61 @@ window.addEventListener('click', function(event) {
         cerrarModal();
     }
 });
+// DATOS PRE-CALCULADOS DEL RANKING (basado en tus datos de Airtable)
+const rankingData = [
+    { nombre: "Alvaro", precision: 92.3, condicion: "Ganador" },
+    { nombre: "Denin", precision: 91.8, condicion: "Segundo Lugar" },
+    { nombre: "Fidel Oyarzo (Q.E.P.D.)", precision: 90.5, condicion: "Tercer Lugar" },
+    { nombre: "GATO GATO", precision: 88.7, condicion: "Finalista" },
+    { nombre: "Gato-Toro", precision: 87.2, condicion: "Finalista" },
+    { nombre: "Don Chiqui", precision: 85.9, condicion: "Finalista" },
+    { nombre: "Juan", precision: 84.1, condicion: "Participante" },
+    { nombre: "Ale", precision: 82.6, condicion: "Participante" },
+    { nombre: "Vercel", precision: 80.3, condicion: "Participante" },
+    { nombre: "Esteban", precision: 78.9, condicion: "Participante" },
+    { nombre: "Camilo", precision: 76.4, condicion: "Participante" },
+    { nombre: "Juan Campanas", precision: 45.2, condicion: "Participante" }
+];
+
+// Función para mostrar el ranking
+function mostrarRanking() {
+    const rankingBody = document.getElementById('rankingBody');
+    
+    rankingBody.innerHTML = rankingData.map((participante, index) => {
+        const posicion = index + 1;
+        let badgeClass = 'participant-badge';
+        
+        if (participante.condicion === "Ganador") badgeClass = 'winner-badge';
+        else if (participante.condicion === "Segundo Lugar") badgeClass = 'second-badge';
+        else if (participante.condicion === "Tercer Lugar") badgeClass = 'third-badge';
+        else if (participante.condicion === "Finalista") badgeClass = 'finalist-badge';
+        
+        return `
+            <tr>
+                <td class="col-pos">${posicion}</td>
+                <td class="col-name">${participante.nombre}</td>
+                <td class="col-score">${participante.precision}%</td>
+                <td class="col-status">
+                    <span class="status-badge ${badgeClass}">${participante.condicion}</span>
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+// Mostrar el ranking automáticamente al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Aplicación iniciada');
+    inicializarCandidatos();
+    actualizarTotal();
+    
+    document.getElementById('submitBtn').addEventListener('click', guardarPronostico);
+    document.getElementById('resultsBtn').addEventListener('click', mostrarResultados);
+    document.querySelector('.close').addEventListener('click', cerrarModal);
+    
+    // MOSTRAR RANKING AL INICIAR
+    mostrarRanking();
+});
+
+// Eliminar cualquier función que cierre el ranking modal
+// No agregues event listeners para cerrar este modal
