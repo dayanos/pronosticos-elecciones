@@ -747,66 +747,70 @@ body {
 }
 
 .ranking-content {
-    max-width: 800px;
-    max-height: 85vh;
+    max-width: 95vw; /* Usar viewport width en lugar de píxeles fijos */
+    max-height: 90vh;
     overflow-y: auto;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     border: 3px solid gold;
+    margin: 10px;
 }
 
 .ranking-header {
     text-align: center;
-    padding: 25px 30px 15px;
+    padding: 20px 15px 10px;
     background: rgba(255,255,255,0.1);
-    border-radius: 20px 20px 0 0;
+    border-radius: 15px 15px 0 0;
 }
 
 .ranking-header h2 {
     margin: 0 0 8px 0;
-    font-size: 2.2rem;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
     font-weight: 800;
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .ranking-subtitle {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
     opacity: 0.9;
     font-weight: 500;
 }
 
 .ranking-table-container {
-    padding: 0 30px 20px;
+    padding: 0 10px 15px;
+    overflow-x: auto; /* Permitir scroll horizontal solo si es absolutamente necesario */
 }
 
 .ranking-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 15px 0;
     background: rgba(255,255,255,0.95);
     color: #333;
-    border-radius: 15px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    min-width: 300px; /* Ancho mínimo para evitar que se rompa */
 }
 
 .ranking-table th {
     background: linear-gradient(135deg, #2c3e50, #34495e);
     color: white;
-    padding: 18px 15px;
+    padding: 14px 8px;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: clamp(0.8rem, 3vw, 1rem);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .ranking-table td {
-    padding: 16px 15px;
+    padding: 12px 8px;
     border-bottom: 1px solid #e9ecef;
     font-weight: 600;
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
 }
 
 .ranking-table tbody tr {
@@ -815,34 +819,39 @@ body {
 
 .ranking-table tbody tr:hover {
     background: rgba(102, 126, 234, 0.1);
-    transform: translateX(5px);
+    transform: translateX(3px);
 }
 
 .ranking-table tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* Columnas específicas */
+/* Columnas específicas - MÁS COMPACTAS */
 .col-pos {
-    width: 80px;
+    width: 50px;
     text-align: center;
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
 }
 
 .col-name {
     text-align: left;
-    font-size: 1.1rem;
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+    max-width: 120px; /* Limitar el ancho del nombre */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .col-score {
-    width: 120px;
+    width: 80px;
     text-align: center;
     font-weight: 700;
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
 }
 
 .col-status {
-    width: 140px;
+    width: 100px;
     text-align: center;
 }
 
@@ -864,103 +873,196 @@ body {
 }
 
 .ranking-table tr:nth-child(1) .col-pos::before {
-    content: "🥇 ";
+    content: "🥇";
+    font-size: 0.9em;
+    margin-right: 2px;
 }
 
 .ranking-table tr:nth-child(2) .col-pos::before {
-    content: "🥈 ";
+    content: "🥈";
+    font-size: 0.9em;
+    margin-right: 2px;
 }
 
 .ranking-table tr:nth-child(3) .col-pos::before {
-    content: "🥉 ";
+    content: "🥉";
+    font-size: 0.9em;
+    margin-right: 2px;
 }
 
-/* Badges de condición */
+/* Badges de condición - MÁS COMPACTOS */
 .status-badge {
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 6px 10px;
+    border-radius: 15px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.2;
 }
 
 .winner-badge {
     background: linear-gradient(135deg, #FFD700, #FFA500);
     color: #000;
-    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 2px 6px rgba(255, 215, 0, 0.4);
 }
 
 .second-badge {
     background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
     color: #000;
-    box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);
+    box-shadow: 0 2px 6px rgba(192, 192, 192, 0.4);
 }
 
 .third-badge {
     background: linear-gradient(135deg, #CD7F32, #A0522D);
     color: white;
-    box-shadow: 0 2px 8px rgba(205, 127, 50, 0.4);
+    box-shadow: 0 2px 6px rgba(205, 127, 50, 0.4);
 }
 
 .finalist-badge {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.4);
 }
 
 .participant-badge {
     background: #e9ecef;
     color: #6c757d;
-    box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+    box-shadow: 0 2px 6px rgba(108, 117, 125, 0.2);
 }
 
 .ranking-footer {
     text-align: center;
-    padding: 15px 30px 25px;
+    padding: 12px 15px 20px;
     background: rgba(0,0,0,0.2);
-    border-radius: 0 0 20px 20px;
-    font-size: 0.9rem;
+    border-radius: 0 0 15px 15px;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
     opacity: 0.8;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* RESPONSIVE MEJORADO */
+@media (max-width: 480px) {
     .ranking-content {
-        margin: 10px;
-        max-height: 90vh;
+        margin: 5px;
+        max-height: 95vh;
+        border-radius: 12px;
     }
     
     .ranking-header {
-        padding: 20px 15px 10px;
-    }
-    
-    .ranking-header h2 {
-        font-size: 1.8rem;
+        padding: 15px 10px 8px;
     }
     
     .ranking-table-container {
-        padding: 0 15px 15px;
+        padding: 0 8px 12px;
+    }
+    
+    .ranking-table {
+        min-width: 280px; /* Aún más pequeño para móviles muy pequeños */
     }
     
     .ranking-table th,
     .ranking-table td {
-        padding: 12px 8px;
-        font-size: 0.9rem;
+        padding: 10px 6px;
+        font-size: 0.85rem;
     }
     
     .col-pos {
-        width: 60px;
-        font-size: 1.1rem;
+        width: 40px;
+        font-size: 0.9rem;
+    }
+    
+    .col-name {
+        max-width: 100px;
+        font-size: 0.85rem;
+    }
+    
+    .col-score {
+        width: 70px;
+        font-size: 0.85rem;
     }
     
     .col-status {
-        width: 100px;
+        width: 90px;
     }
     
     .status-badge {
-        padding: 6px 10px;
-        font-size: 0.8rem;
+        padding: 5px 8px;
+        font-size: 0.75rem;
+        border-radius: 12px;
+    }
+    
+    /* Simplificar los emojis en móvil muy pequeño */
+    .ranking-table tr:nth-child(1) .col-pos::before,
+    .ranking-table tr:nth-child(2) .col-pos::before,
+    .ranking-table tr:nth-child(3) .col-pos::before {
+        content: ""; /* Quitar emojis en móviles muy pequeños */
+    }
+    
+    .ranking-table tr:nth-child(1) .col-pos::after {
+        content: "1°";
+    }
+    
+    .ranking-table tr:nth-child(2) .col-pos::after {
+        content: "2°";
+    }
+    
+    .ranking-table tr:nth-child(3) .col-pos::after {
+        content: "3°";
     }
 }
 
+/* Para tablets y pantallas medianas */
+@media (min-width: 481px) and (max-width: 768px) {
+    .ranking-content {
+        max-width: 90vw;
+    }
+    
+    .ranking-table th,
+    .ranking-table td {
+        padding: 12px 10px;
+    }
+    
+    .col-name {
+        max-width: 150px;
+    }
+}
+
+/* Para pantallas muy pequeñas (menos de 350px) */
+@media (max-width: 350px) {
+    .ranking-table {
+        min-width: 260px;
+    }
+    
+    .ranking-table th,
+    .ranking-table td {
+        padding: 8px 4px;
+        font-size: 0.8rem;
+    }
+    
+    .col-pos {
+        width: 35px;
+    }
+    
+    .col-name {
+        max-width: 80px;
+    }
+    
+    .col-score {
+        width: 60px;
+    }
+    
+    .col-status {
+        width: 80px;
+    }
+    
+    .status-badge {
+        padding: 4px 6px;
+        font-size: 0.7rem;
+    }
+    
+    .ranking-header h2 {
+        font-size: 1.3rem;
+    }
+}
