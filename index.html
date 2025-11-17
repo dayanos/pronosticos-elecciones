@@ -56,8 +56,39 @@
     </div>
 
     <script src="js/app.js"></script>
+<!-- Modal de Ranking - FIJO NO CERRABLE -->
+<div id="rankingModal" class="modal ranking-modal">
+    <div class="modal-content ranking-content">
+        <div class="ranking-header">
+            <h2>🏆 Ranking de Pronosticadores</h2>
+            <div class="ranking-subtitle">Ordenados por precisión en las predicciones</div>
+        </div>
+        
+        <div class="ranking-table-container">
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th class="col-pos">#</th>
+                        <th class="col-name">Participante</th>
+                        <th class="col-score">Precisión</th>
+                        <th class="col-status">Condición</th>
+                    </tr>
+                </thead>
+                <tbody id="rankingBody">
+                    <!-- Los datos del ranking se insertarán aquí -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="ranking-footer">
+            <p>Basado en la cercanía a los resultados reales de la primera vuelta</p>
+        </div>
+    </div>
+</div>
+    
 </body>
 </html>
+
 
 
 
