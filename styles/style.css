@@ -738,4 +738,229 @@ body {
     }
 }
 
+/* RANKING MODAL - NO CERRABLE */
+.ranking-modal {
+    display: block !important; /* SIEMPRE VISIBLE */
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.ranking-content {
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border: 3px solid gold;
+}
+
+.ranking-header {
+    text-align: center;
+    padding: 25px 30px 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px 20px 0 0;
+}
+
+.ranking-header h2 {
+    margin: 0 0 8px 0;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.ranking-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.ranking-table-container {
+    padding: 0 30px 20px;
+}
+
+.ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.ranking-table th {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 18px 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ranking-table td {
+    padding: 16px 15px;
+    border-bottom: 1px solid #e9ecef;
+    font-weight: 600;
+}
+
+.ranking-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.ranking-table tbody tr:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(5px);
+}
+
+.ranking-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Columnas específicas */
+.col-pos {
+    width: 80px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.col-name {
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.col-score {
+    width: 120px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.col-status {
+    width: 140px;
+    text-align: center;
+}
+
+/* Estilos para posiciones especiales */
+.ranking-table tr:nth-child(1) {
+    background: linear-gradient(135deg, #FFD700, #FFEC8B);
+    color: #000;
+    font-weight: 800;
+}
+
+.ranking-table tr:nth-child(2) {
+    background: linear-gradient(135deg, #C0C0C0, #E8E8E8);
+    color: #000;
+}
+
+.ranking-table tr:nth-child(3) {
+    background: linear-gradient(135deg, #CD7F32, #E8B884);
+    color: #000;
+}
+
+.ranking-table tr:nth-child(1) .col-pos::before {
+    content: "🥇 ";
+}
+
+.ranking-table tr:nth-child(2) .col-pos::before {
+    content: "🥈 ";
+}
+
+.ranking-table tr:nth-child(3) .col-pos::before {
+    content: "🥉 ";
+}
+
+/* Badges de condición */
+.status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.winner-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.second-badge {
+    background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+    color: #000;
+    box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);
+}
+
+.third-badge {
+    background: linear-gradient(135deg, #CD7F32, #A0522D);
+    color: white;
+    box-shadow: 0 2px 8px rgba(205, 127, 50, 0.4);
+}
+
+.finalist-badge {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.participant-badge {
+    background: #e9ecef;
+    color: #6c757d;
+    box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+}
+
+.ranking-footer {
+    text-align: center;
+    padding: 15px 30px 25px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 0 0 20px 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ranking-content {
+        margin: 10px;
+        max-height: 90vh;
+    }
+    
+    .ranking-header {
+        padding: 20px 15px 10px;
+    }
+    
+    .ranking-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .ranking-table-container {
+        padding: 0 15px 15px;
+    }
+    
+    .ranking-table th,
+    .ranking-table td {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .col-pos {
+        width: 60px;
+        font-size: 1.1rem;
+    }
+    
+    .col-status {
+        width: 100px;
+    }
+    
+    .status-badge {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
 
