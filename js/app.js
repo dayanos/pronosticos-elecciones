@@ -1,36 +1,12 @@
 // Candidatos predefinidos con fotos (imágenes locales)
 const candidatos = [
     { 
-        nombre: "Franco parisi", 
-        foto: "images/pari.jpg" 
-    },
-    { 
         nombre: "Jeannette Jara", 
         foto: "images/jara.jpg" 
     },
     { 
-        nombre: "MEO", 
-        foto: "images/meo.jpg" 
-    },
-    { 
-        nombre: "Johannes Kaiser", 
-        foto: "images/kai.jpg" 
-    },
-    { 
         nombre: "Jose Kast", 
         foto: "images/kakas.jpg" 
-    },
-    { 
-        nombre: "Eduardo Artes", 
-        foto: "images/arte.jpg" 
-    },
-    { 
-        nombre: "Evelyn Matthei", 
-        foto: "images/mate.jpg" 
-    },
-    { 
-        nombre: "Maicol", 
-        foto: "images/haro.jpg" 
     }
 ];
 
@@ -61,7 +37,7 @@ function inicializarCandidatos() {
         candidateDiv.className = 'candidate-item';
         candidateDiv.innerHTML = `
             <div class="photo-container">
-                <img src="${candidato.foto}" alt="${candidato.nombre}" class="candidate-photo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2NjdlZWEiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04IDMyQzEyIDI0IDI4IDI0IDMyIDMyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K='">
+                <img src="${candidato.foto}" alt="${candidato.nombre}" class="candidate-photo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2NjdlZWEiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTggMzJDMTIgMjQgMjggMjQgMzIgMzIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo='">
             </div>
             <div class="candidate-name">${candidato.nombre}</div>
             <div class="slider-container">
@@ -183,14 +159,15 @@ async function guardarPronostico() {
             });
         });
         
-// Preparar datos para Airtable - FECHA COMPLETA CON HORA
-const recordData = {
-    "fields": {
-        "Nombre": nombre,
-        "Fecha": new Date().toISOString(), // ← GUARDAR FECHA Y HORA COMPLETA
-        "Candidatos": JSON.stringify(candidatosData)
-    }
-};
+        // Preparar datos para Airtable - FECHA COMPLETA CON HORA
+        const recordData = {
+            "fields": {
+                "Nombre": nombre,
+                "Fecha": new Date().toISOString(), // ← GUARDAR FECHA Y HORA COMPLETA
+                "Candidatos": JSON.stringify(candidatosData)
+            }
+        };
+        
         console.log('Enviando a Airtable:', recordData);
         
         const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_CONFIG.BASE_ID}/${encodeURIComponent(AIRTABLE_CONFIG.TABLE_NAME)}`;
@@ -334,7 +311,7 @@ function mostrarResultadosEnModal(pronosticos) {
                     const claseCompacto = esCompacto ? 'candidato-compacto' : '';
                     
                     const candidatoOriginal = candidatos.find(c => c.nombre === candidato.nombre);
-                    const foto = candidatoOriginal ? candidatoOriginal.foto : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2NjdlZWEiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04IDMyQzEyIDI0IDI4IDI0IDMyIDMyIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K=';
+                    const foto = candidatoOriginal ? candidatoOriginal.foto : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2NjdlZWEiLz4KPGNpcmNsZSBjeD0iMjAiIGN5PSIxNiIgcj0iNiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTggMzJDMTIgMjQgMjggMjQgMzIgMzIiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=';
                     
                     if (esSegundaVuelta) {
                         return `
